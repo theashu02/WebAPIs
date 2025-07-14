@@ -124,8 +124,7 @@ export function MapView({ reports, currentLocation, onReportClick }: MapViewProp
           const marker = L.marker([report.location.latitude, report.location.longitude], {
             icon: markerIcon,
             reportId: report.id,
-          } as L.MarkerOptions & { reportId: string }
-        ).addTo(map)
+          }).addTo(map)
 
           // Create popup content
           const popupContent = `

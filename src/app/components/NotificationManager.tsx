@@ -1,9 +1,7 @@
 "use client"
-
 import { useState, useEffect } from "react"
 import { Bell, BellOff } from "lucide-react"
 import { Button } from "@/components/ui/button"
-// import { useToast } from "@/hooks/use-toast"
 import { toast } from "sonner"
 
 interface NotificationManagerProps {
@@ -13,7 +11,6 @@ interface NotificationManagerProps {
 
 export function NotificationManager({ enabled, onToggle }: NotificationManagerProps) {
   const [permission, setPermission] = useState<NotificationPermission>("default")
-  // const { toast } = useToast()
 
   useEffect(() => {
     if ("Notification" in window) {
@@ -57,16 +54,12 @@ export function NotificationManager({ enabled, onToggle }: NotificationManagerPr
       requestPermission()
     } else {
       onToggle(!enabled)
-      if(enabled){
+      if(!enabled){
         toast("You'll receive updates about your reports")
       }
       else{
         toast("You won't receive notification updates")
       }
-      // toast({
-      //   title: enabled ? "Notifications disabled" : "Notifications enabled",
-      //   description: enabled ? "You won't receive notification updates" : "You'll receive updates about your reports",
-      // })
     }
   }
 
@@ -131,7 +124,7 @@ export function sendEmergencyAlert(message: string, severity: "low" | "medium" |
       requireInteraction: config.requireInteraction,
       silent: false,
       vibrate: severity === "critical" ? [200, 100, 200, 100, 200] : [200, 100, 200],
-    })
+    } as any)
 
     notification.onclick = () => {
       window.focus()

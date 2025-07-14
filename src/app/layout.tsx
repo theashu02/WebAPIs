@@ -13,9 +13,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body>{children}</body>
-      <Toaster position="top-right"/>
+    <html lang="en" suppressHydrationWarning={true}>
+      <body>
+        {children}
+        <Toaster position="top-right" />
+      </body>
     </html>
   );
 }

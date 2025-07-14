@@ -1,44 +1,38 @@
-"use client"
-import React from "react"
-import { Badge } from "@/components/ui/badge"
-import {
-  CheckCircle,
-  XCircle,
-  Clock,
-  MapPin,
-  ImageIcon,
-} from "lucide-react"
+"use client";
+import React from "react";
+import { Badge } from "@/components/ui/badge";
+import { CheckCircle, XCircle, Clock, MapPin, ImageIcon } from "lucide-react";
 
 interface DisasterReport {
-  id: string
-  type: string
-  severity: string
-  description: string
-  photos: string[]
+  id: string;
+  type: string;
+  severity: string;
+  description: string;
+  photos: string[];
   location: {
-    latitude: number
-    longitude: number
-  }
-  timestamp: number
-  status: "pending" | "sent" | "failed"
-  retryCount: number
+    latitude: number;
+    longitude: number;
+  };
+  timestamp: number;
+  status: "pending" | "sent" | "failed";
+  retryCount: number;
 }
 
 interface ReportItemProps {
-  report: DisasterReport
+  report: DisasterReport;
 }
 
 export default function ReportItem({ report }: ReportItemProps) {
   const getStatusIcon = (status: string) => {
     switch (status) {
       case "sent":
-        return <CheckCircle className="h-4 w-4 text-green-500" />
+        return <CheckCircle className="h-4 w-4 text-green-500" />;
       case "failed":
-        return <XCircle className="h-4 w-4 text-red-500" />
+        return <XCircle className="h-4 w-4 text-red-500" />;
       default:
-        return <Clock className="h-4 w-4 text-yellow-500" />
+        return <Clock className="h-4 w-4 text-yellow-500" />;
     }
-  }
+  };
   const getStatusBadge = (status: string) => {
     switch (status) {
       case "sent":
@@ -46,19 +40,16 @@ export default function ReportItem({ report }: ReportItemProps) {
           <Badge variant="default" className="bg-green-100 text-green-800">
             Sent
           </Badge>
-        )
+        );
       case "failed":
-        return <Badge variant="destructive">Failed</Badge>
+        return <Badge variant="destructive">Failed</Badge>;
       default:
-        return <Badge variant="secondary">Pending</Badge>
+        return <Badge variant="secondary">Pending</Badge>;
     }
-  }
+  };
 
   return (
-    <div
-      id={`report-${report.id}`}
-      className="border rounded-lg p-3 space-y-2"
-    >
+    <div id={`report-${report.id}`} className="border rounded-lg p-3 space-y-2">
       {/* Header row */}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
@@ -132,5 +123,5 @@ export default function ReportItem({ report }: ReportItemProps) {
         )}
       </div>
     </div>
-  )
+  );
 }

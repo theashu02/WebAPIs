@@ -1,17 +1,19 @@
-"use client"
-import React from "react"
-import { Alert, AlertDescription } from "@/components/ui/alert"
-import { Wifi, WifiOff } from "lucide-react"
+"use client";
+import React from "react";
+import { Alert, AlertDescription } from "@/components/ui/alert";
+import { Wifi, WifiOff } from "lucide-react";
 
 interface NetworkInfo {
-  online: boolean
-  effectiveType?: string
-  saveData?: boolean
+  online: boolean;
+  effectiveType?: string;
+  saveData?: boolean;
+  downlink?: number;
+  rtt?: number;
 }
 
 interface NetworkStatusProps {
-  networkInfo: NetworkInfo
-  pendingCount: number
+  networkInfo: NetworkInfo;
+  pendingCount: number;
 }
 
 export default function NetworkStatus({
@@ -34,9 +36,9 @@ export default function NetworkStatus({
         )}
         <AlertDescription>
           {networkInfo.online
-            ? `Online${
-                networkInfo.saveData ? " (Data Saver Mode)" : ""
-              } - ${networkInfo.effectiveType || "Unknown"} connection`
+            ? `Online${networkInfo.saveData ? " (Data Saver Mode)" : ""} - ${
+                networkInfo.effectiveType || "Unknown"
+              } connection`
             : "Offline - Reports will be queued for sync"}
           {pendingCount > 0 && (
             <span className="ml-2 font-medium">
@@ -45,7 +47,17 @@ export default function NetworkStatus({
             </span>
           )}
         </AlertDescription>
+        <div className="text-xs text-gray-600 ml-6 space-x-2">
+          {networkInfo.effectiveType && (
+            <span>Type: {networkInfo.effectiveType.toUpperCase()}</span>
+          )}
+          {networkInfo.downlink != null && (
+            <span>Speed: {networkInfo.downlink} Mbps</span>
+          )}
+          {networkInfo.rtt != null && <span>RTT: {networkInfo.rtt} ms</span>}
+          {networkInfo.saveData && <span>Data Saver On</span>}
+        </div>
       </div>
     </Alert>
-  )
+  );
 }

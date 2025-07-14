@@ -8,9 +8,11 @@ import {
   CardDescription,
 } from "@/components/ui/card"
 import { MapView } from "./MapView"
+import type { DisasterReport } from "../page"
 
 interface MapSectionProps {
-  reports: Array<{ id: string }>
+  reports: DisasterReport[]
+  // reports: Array<{ id: string }>
   currentLocation: GeolocationPosition | null
 }
 

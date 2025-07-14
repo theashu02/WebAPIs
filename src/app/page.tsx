@@ -37,6 +37,7 @@ import { MapView } from "./components/MapView";
 import { NotificationManager } from "./components/NotificationManager";
 import { sendEmergencyAlert } from "./components/NotificationManager";
 import { sendNotification } from "@/lib/notifications";
+import { ModeToggle } from "@/components/ModeToggle";
 const NetworkAlert = dynamic(() => import("./components/NetworkAlert"), {
   ssr: false,
 });
@@ -394,15 +395,18 @@ export default function DisasterReporter() {
   }, [notificationsEnabled]);
 
   return (
-    <div className="min-h-screen bg-gray-50 p-4">
+    <div className="min-h-screen bg-[#f4f4f4] p-4 dark:bg-neutral-900">
+      <div className="absolute right-10 top-10">
+        <ModeToggle />
+      </div>
       <div className="max-w-4xl mx-auto space-y-6">
         {/* Header */}
         <div className="text-center space-y-2">
           <div className="flex items-center justify-center gap-2">
-            <AlertTriangle className="h-8 w-8 text-red-500" />
+            <AlertTriangle className="h-8 w-8 dark:text-[#f4f4f4]" />
             <h1 className="text-3xl font-bold">Disaster Reporter</h1>
           </div>
-          <p className="text-gray-600">
+          <p className="text-gray-600 dark:text-amber-100">
             Report hazards and disasters in your area
           </p>
 

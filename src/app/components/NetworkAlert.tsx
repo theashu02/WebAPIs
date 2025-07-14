@@ -50,10 +50,10 @@ export default function NetworkAlert({ pendingCount }: { pendingCount: number })
 
   return (
     <Alert
-      className={`relative flex items-center gap-3 p-4 rounded-lg shadow-sm border-l-4 ${
+      className={`dark:bg-stone-800 relative flex items-center gap-3 p-4 rounded-lg shadow-sm border-l-4 ${
         net.online
-          ? "border-l-green-500 bg-white border border-green-100"
-          : "border-l-red-500 bg-white border border-red-100"
+          ? "border-l-green-500 bg-white border"
+          : "border-l-red-500 bg-white border"
       }`}
     >
       <div
@@ -83,7 +83,7 @@ export default function NetworkAlert({ pendingCount }: { pendingCount: number })
             </span>
           )}
         </div>
-        <AlertDescription className="text-sm text-gray-600 mt-1">
+        <AlertDescription className="text-sm text-gray-600 mt-1 dark:text-gray-200">
           {net.online
             ? `${net.effectiveType || "Unknown"} connection`
             : "Reports will be queued for sync"}

@@ -1,7 +1,5 @@
 "use client"
-
 import type React from "react"
-
 import { useState, useRef } from "react"
 import { Camera, Upload, X, ImageIcon } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -95,7 +93,7 @@ export function PhotoCapture({ photos, onPhotosChange, onRemovePhoto }: PhotoCap
           size="sm"
           onClick={startCamera}
           disabled={isCapturing}
-          className="flex items-center gap-2 bg-transparent"
+          className="items-center gap-2 bg-transparent hidden"
         >
           <Camera className="h-4 w-4" />
           Take Photo

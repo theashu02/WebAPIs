@@ -396,7 +396,7 @@ export default function DisasterReporter() {
 
   return (
     <div className="min-h-screen bg-[#f4f4f4] p-4 dark:bg-neutral-900">
-      <div className="absolute right-10 top-10">
+      <div className="absolute right-3 top-6 md:right-10 md:top-10">
         <ModeToggle />
       </div>
       <div className="max-w-4xl mx-auto space-y-6">

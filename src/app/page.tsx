@@ -544,7 +544,7 @@ export default function DisasterReporter() {
                 <div className="flex items-center gap-2 text-sm text-gray-600">
                   <MapPin className="h-4 w-4" />
                   {currentLocation ? (
-                    <span>
+                    <span className="text-black dark:text-amber-200">
                       Location: {currentLocation.coords.latitude.toFixed(6)},{" "}
                       {currentLocation.coords.longitude.toFixed(6)}
                     </span>
